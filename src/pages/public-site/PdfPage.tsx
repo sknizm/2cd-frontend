@@ -18,7 +18,7 @@ export default function PdfPage() {
   const { slug } = useParams<{ slug: string }>();
   const [pdf, setPdf] = useState<PdfData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [showLoader, setShowLoader] = useState(true);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
   const [error, setError] = useState<{
     type: 'not_found' | 'inactive' | 'other';
     message: string;
@@ -47,17 +47,14 @@ export default function PdfPage() {
           }
           return;
         }
-        console.log("pdf", data)
-        setPdf(data.pdf);
 
-        // Show loader for 2 seconds
-        setTimeout(() => setShowLoader(false), 2000);
+        setPdf(data.pdf);
       } catch (err) {
-        if(err)
-        setError({
-          type: 'other',
-          message: 'Something went wrong. Please try again later.',
-        });
+        if (err)
+          setError({
+            type: 'other',
+            message: 'Something went wrong. Please try again later.',
+          });
       } finally {
         setLoading(false);
       }
@@ -67,6 +64,10 @@ export default function PdfPage() {
       fetchPdfData();
     }
   }, [slug]);
+
+  const handleIframeLoad = () => {
+    setIframeLoaded(true);
+  };
 
   if (loading) return <div className="p-4">Loading PDF...</div>;
 
@@ -78,22 +79,33 @@ export default function PdfPage() {
 
   if (!pdf) return null;
 
-  const googleViewerUrl = `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(pdf.url)}`;
+  const googleViewerUrl = `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(
+    `${config.backend_url}/public/${pdf.file_path}`
+  )}`;
 
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-full h-screen bg-white">
       {/* Loader Overlay */}
-      {showLoader && (
-        <div className="absolute inset-0 z-50 flex items-center justify-center bg-white">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500" />
+      {!iframeLoaded && (
+        <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-white transition-opacity duration-300">
+          <div className="flex space-x-3">
+            <div className="w-5 h-5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+            <div className="w-5 h-5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+            <div className="w-5 h-5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+          </div>
+          <p className="mt-6 text-lg font-medium text-gray-600 animate-pulse">
+            Loading menu...
+          </p>
         </div>
       )}
 
-      {/* PDF Viewer via Google Docs */}
+      {/* PDF Viewer iframe */}
       <iframe
         title={pdf.name ?? 'PDF Viewer'}
         src={googleViewerUrl}
         className="w-full h-full border-none"
+        onLoad={handleIframeLoad}
+        style={{ display: iframeLoaded ? 'block' : 'none' }}
       />
     </div>
   );

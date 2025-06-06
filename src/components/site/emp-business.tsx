@@ -21,7 +21,7 @@ export default function EmpowerBusiness() {
   <div className="bg-white p-6 rounded-2xl shadow-md border border-amber-100 w-full max-w-xs text-center transition-all hover:shadow-lg hover:border-amber-200">
     <p className="text-gray-500 text-sm mb-2">Your MenuLink URL</p>
     <p className="text-xl font-bold text-gray-700">
-      menulink.space/<span className="text-amber-600">yourname</span>
+      2cd.site/<span className="text-amber-600">your-menu</span>
     </p>
   </div>
 
@@ -39,44 +39,14 @@ export default function EmpowerBusiness() {
   </div>
 </div>
   
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {[
-              {
-                icon: '🍽️',
-                title: 'Table Ordering',
-                description: 'Customers order directly from their table with QR codes',
-                color: 'bg-amber-100'
-              },
-              {
-                icon: '🏨',
-                title: 'Room Service',
-                description: 'Guests order from their hotel room with ease',
-                color: 'bg-indigo-100'
-              },
-              {
-                icon: '🚀',
-                title: 'Takeaway Orders',
-                description: 'Boost pickup sales with advance online ordering',
-                color: 'bg-amber-100'
-              }
-            ].map((feature, index) => (
-              <div 
-                key={index} 
-                className={`bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md hover:border-amber-200 transition-all ${feature.color}`}
-              >
-                <div className="text-3xl mb-3">{feature.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
-          </div>
+      
   
           <div className="mt-12 text-center">
             <Link 
               to="/signup" 
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700"
             >
-              Make Your Menu for Free
+              Make Your Digital Menu Now
             </Link>
           </div>
         </div>

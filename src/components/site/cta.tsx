@@ -11,7 +11,7 @@ export default function CTA() {
               to="/signup" 
               className="px-8 py-4 bg-white text-amber-600 font-semibold rounded-lg shadow-lg hover:bg-gray-100 transition-all transform hover:-translate-y-1"
             >
-              Get Started - 3-Days Free Trial
+              Get Started with 1 Day Free Trial
             </Link>
            
           </div>

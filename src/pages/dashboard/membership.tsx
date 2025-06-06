@@ -56,74 +56,65 @@ export default function Membership() {
   if (loading) return <BouncingDotsLoader />;
   if (!membership) return <div className="p-4 md:p-8 text-red-500">Unable to load membership info.</div>;
 
-const daysLeft =
-  membership?.membership && membership.expiry_date
-    ? differenceInDays(parseISO(membership.expiry_date), new Date()) + 1
-    : 0;
+  const daysLeft =
+    membership?.membership && membership.expiry_date
+      ? differenceInDays(parseISO(membership.expiry_date), new Date()) + 1
+      : 0;
 
   const isExpired = !membership.membership || daysLeft <= 0;
-  const currentPlan = membership.planType || "Free Trial";
+  const isLongTerm = daysLeft > 30;
+  const currentPlan = isLongTerm ? "Lifetime Access" : (membership.planType || "Free Trial");
 
   const plans = [
     {
-      name: "Monthly Plan",
-      price: "₹29",
-      description: "Transition from paper menus to mobile QR code menus.",
-      features: [
-        "Unlimited menu items & photos",
-        "Get Orders on WhatsApp",
-        "Instagram account integration",
-        "Free QR code",
-        "Full access to all features",
-      ],
-      cta: "Choose Monthly Plan",
-    },
-    {
-      name: "Yearly Plan",
-      price: "₹299",
+      name: "Lifetime Access",
+      price: "₹49",
       originalPrice: "₹588",
       description: "Best value for long-term users",
       features: [
-        "Everything in the Monthly Plan",
-        "2 months free compared to monthly",
-        "Priority support",
-        "Annual billing",
-        "Save 50%",
+        "Lifetime Access",
+        "Unlimited Visitors",
+        "Fast Loading",
+        "Upto 3 PDF Menu",
+        "No Hidden Charges",
+        "Save 80%",
       ],
-      cta: "Choose Yearly Plan",
+      cta: "Get Membership",
       popular: true,
     },
   ];
 
   const handleCtaClick = (planName: string) => {
-    const message = `Hi, I want to get the ${planName}. Please assist me.`;
+    const message = `Hi, I want to get the ${planName} in 2cd.site. Please assist me.`;
     const url = `https://wa.me/918455838503?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
 
   return (
     <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-6">
-      {/* Plan Status */}
-      <Card className="bg-gradient-to-r from-amber-100 via-yellow-50 to-white border-amber-200">
-        <CardHeader className="pb-2">
-          <CardTitle className="flex items-center gap-2 text-amber-700 text-xl">
-            <Clock className="w-5 h-5" />
-            {isExpired
-              ? "Plan Expired"
-              : `${daysLeft} day${daysLeft !== 1 ? "s" : ""} left in your plan`}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="text-gray-700 text-sm">
-          {isExpired ? (
-            <>Please choose a plan to continue using the service.</>
-          ) : (
-            <>
-              Your current <strong>{currentPlan}</strong> plan expires on{" "}
-              <strong>{membership.expiry_date}</strong>.
-            </>
-          )}
-        </CardContent>
-      </Card>
+      {/* Plan Status - Only show if not long term and not expired */}
+      {!isLongTerm && (
+        <Card className="bg-gradient-to-r from-amber-100 via-yellow-50 to-white border-amber-200">
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-2 text-amber-700 text-xl">
+              <Clock className="w-5 h-5" />
+              {isExpired
+                ? "Plan Expired"
+                : `${daysLeft} day${daysLeft !== 1 ? "s" : ""} left in your plan`}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="text-gray-700 text-sm">
+            {isExpired ? (
+              <>Please choose a plan to continue using the service.</>
+            ) : (
+              <>
+                Your current <strong>{currentPlan}</strong> plan expires on{" "}
+                <strong>{membership.expiry_date}</strong>.
+              </>
+            )}
+          </CardContent>
+        </Card>
+      )}
 
       {/* Current Plan */}
       {!isExpired && (
@@ -140,7 +131,11 @@ const daysLeft =
             </CardTitle>
           </CardHeader>
           <CardContent className="text-sm text-gray-700">
-            Enjoy full access to all features. You can upgrade when new plans are available.
+            {isLongTerm ? (
+              "Enjoy lifetime access to all features. No need to renew!"
+            ) : (
+              "Enjoy full access to all features. You can upgrade when new plans are available."
+            )}
           </CardContent>
         </Card>
       )}
@@ -177,7 +172,7 @@ const daysLeft =
                   {plan.originalPrice && (
                     <>
                       <span className="ml-2 text-lg text-gray-500 line-through">{plan.originalPrice}</span>
-                      <span className="ml-2 text-sm bg-green-100 text-green-800 px-2 py-0.5 rounded-full">Save 50%</span>
+                      <span className="ml-2 text-sm bg-green-100 text-green-800 px-2 py-0.5 rounded-full">Save 80%</span>
                     </>
                   )}
                   <span className="block text-sm text-gray-500 mt-1">

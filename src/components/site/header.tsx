@@ -16,7 +16,7 @@ export default function Header({isLoggedIn=false}) {
               </span> */}
             <span className="inline-flex items-center px-3 py-1 rounded-full bg-amber-50 border border-amber-100">
   <span className="text-xl font-bold bg-gradient-to-r from-amber-600 to-amber-600 bg-clip-text text-transparent">
-    MenuLink
+    2cd Site
   </span>
 </span>
             </Link>
@@ -87,7 +87,7 @@ export default function Header({isLoggedIn=false}) {
                   className="bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700 text-white shadow-md hover:shadow-lg transition-all"
                 >
                   <Link to="/signup">
-                    <span>Get Started</span>
+                    <span>Create Digital Menu </span>
                   </Link>
                 </Button>
               </>

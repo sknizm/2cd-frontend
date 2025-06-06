@@ -62,7 +62,7 @@ const SignUpPage = () => {
                     <div className="flex justify-center">
                        <span className="inline-flex items-center px-3 py-1 rounded-full bg-amber-50 border border-amber-100">
   <span className="text-sm font-bold bg-gradient-to-r from-amber-600 to-amber-600 bg-clip-text text-transparent">
-    MenuLink
+    2cd Site
   </span>
 </span>
                     </div>

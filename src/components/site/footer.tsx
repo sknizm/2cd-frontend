@@ -11,7 +11,7 @@ export default function Footer() {
             <div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 <span className="bg-gradient-to-r from-amber-400 to-amber-400 bg-clip-text text-transparent">
-                  MenuLink
+                  2cd Site
                 </span>
               </h3>
               <p className="mb-6">Beautiful digital menus for restaurants, cafes, hotels, and more.</p>
@@ -70,7 +70,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center space-x-6">
               <Link to="mailto:hello@menulink.com" className="flex items-center text-gray-400 hover:text-white transition-colors">
-                <Mail className="h-5 w-5 mr-2" /> hello@menulink.com
+                <Mail className="h-5 w-5 mr-2" /> hello@2cd.site
               </Link>
               <Link to="tel:+18005551234" className="flex items-center text-gray-400 hover:text-white transition-colors">
                 <Phone className="h-5 w-5 mr-2" /> (800) 555-1234
@@ -79,7 +79,7 @@ export default function Footer() {
           </div>
   
           <div className="mt-8 text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center">
-            <p>© {currentYear} MenuLink. All rights reserved.</p>
+            <p>© {currentYear} 2cd Site. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link to="#" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link to="#" className="hover:text-white transition-colors">Terms of Service</Link>

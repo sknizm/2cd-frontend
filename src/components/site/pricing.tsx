@@ -24,33 +24,21 @@ export default function Pricing2({ isWhatsApp, isMembershipInactive=false }: Pri
   
     const plans = [
       {
-        name: "Monthly Plan",
-        price: "₹29",
-        description: "Transition from the traditional paper menus to QR code enabled beautiful mobile menu.",
-        features: [
-          "Unlimited menu items & photos",
-          "Get Orders on WhatsApp",
-          "Instagram account integration",
-          "Free QR code",
-          "Full access to all features",
-        ],
-        cta: "Get Started"
-      },
-      {
-        name: "Yearly Plan",
-        price: "₹299",
-        originalPrice: "₹588",
-        description: "Best value for long-term users",
-        features: [
-          "Everything in the Monthly Plan",
-          "2 months free compared to monthly",
-          "Priority support",
-          "Annual billing",
-          "Save 50%"
-        ],
-        cta: "Get Started",
-        popular: true
-      }
+      name: "Lifetime Access",
+      price: "₹49",
+      originalPrice: "₹588",
+      description: "Best value for long-term users",
+      features: [
+        "Lifetime Access",
+        "Unlimited Visitors",
+        "Fast Loading",
+        "Upto 3 PDF Menu",
+        "No Hidden Charges",
+        "Save 80%",
+      ],
+      cta: "Get Membership",
+      popular: true,
+    },
     ]
   
     return (
@@ -79,7 +67,7 @@ export default function Pricing2({ isWhatsApp, isMembershipInactive=false }: Pri
           }
         
   
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-4xl mx-auto">
             {plans.map((plan, index) => (
               <div 
                 key={index} 

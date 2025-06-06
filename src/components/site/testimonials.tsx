@@ -10,7 +10,7 @@ export default function Testimonials() {
             </span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Join thousands of Indian restaurants growing their business with MenuLink
+            Join thousands of Indian restaurants growing their business with 2cd Site
           </p>
         </div>
 
@@ -18,7 +18,7 @@ export default function Testimonials() {
           {[
             {
               quote:
-                "MenuLink made it super easy to update our menu items during festive seasons. Our Diwali specials sold out faster than ever!",
+                "2cd.site made it super easy to update our menu items during festive seasons. Our Diwali specials sold out faster than ever!",
               author: "Priya Sharma",
               role: "Owner, Spice Villa",
               rating: 5

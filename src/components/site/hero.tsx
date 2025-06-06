@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
+import hero from '@/assets/hero.png'
 
 export default function Hero() {
     return (
@@ -25,7 +26,7 @@ export default function Hero() {
                 className="bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700 text-white shadow-lg hover:shadow-xl transition-all"
               >
                 <Link to={'/signup'}>
-                Get Started for Free →
+                Create Menu →
                 </Link>
               </Button>
               
@@ -34,7 +35,7 @@ export default function Hero() {
                 size="lg" 
                 className="border-amber-300 text-amber-600 hover:bg-amber-50 gap-2 hover:border-amber-400"
               >
-                <a href="https://menulink.space/demo">
+                <a href="https://2cd.site/023fb7bb-8a3a-4ede-bb50-7b64c9055ccd">
                   See Demo →
                 </a>
               </Button>
@@ -56,16 +57,13 @@ export default function Hero() {
           </div>
           
           {/* YouTube Video Embed */}
-          <div className="relative w-full max-w-lg aspect-video">
-            <iframe
-              className="w-full h-full rounded-xl shadow-2xl"
-              src="https://www.youtube.com/embed/YFLasugdi3M?si=AiUWHyDrOz7rwaNn"
-              title="Intro Video"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
+       <div className="relative w-full max-w-xl lg:max-w-2xl">
+          <img
+            src={hero}
+            alt="Digital menu example"
+            className="w-full h-full object-contain "
+          />
+        </div>
         </div>
       </section>
     )

@@ -15,13 +15,12 @@ import Membership from './pages/dashboard/membership';
 import PDFListPage from './pages/dashboard/allpdfs';
 import PdfUploadForm from './pages/dashboard/addpdf';
 import PdfPage from './pages/public-site/PdfPage';
+import DashboardPage from './pages/dashboard/dashboard';
 
 // Lazy load pages for performance
 const SignInPage = lazy(() => import('@/pages/auth/SignInPage'));
 const SignUpPage = lazy(() => import('@/pages/auth/SignUpPage'));
 const OnboardingPage = lazy(() => import('@/pages/onboarding/OnboardingPage'));
-const DashboardPage = lazy(() => import('@/pages/dashboard/dashboard'));
-const RestaurantSettingsPage = lazy(() => import('@/pages/dashboard/setting'));
 
 function App() {
   const context = useContext(AppContext);
@@ -67,8 +66,8 @@ const isAdmin = user?.email === config.admin_email;
             <Route 
               path="/dashboard" 
               element={
-                
-                  <DashboardPage />
+                user?
+                  <DashboardPage />:<SignInPage/>
               }
             >
               <Route index element={<Navigate to="home" replace />} />
@@ -76,7 +75,6 @@ const isAdmin = user?.email === config.admin_email;
               <Route path="pdf/create" element={<PdfUploadForm />} />
               <Route path="pdf/create/:id" element={<PdfUploadForm />} />
               <Route path="membership" element={<Membership />}/> 
-              <Route path="restaurant" element={<RestaurantSettingsPage />} />
             </Route>
             
             {/* Root Redirect */}
